@@ -1,0 +1,9 @@
+items:
+  - name: "Pago de Tacoma 🛻"
+    everyWhenDay: 3
+
+  - name: "Pago de Kia 🚗"
+    everyWhenDay: 1
+
+  - name: "Pago de la Casa 🏠"
+    everyWhenDay: 3
