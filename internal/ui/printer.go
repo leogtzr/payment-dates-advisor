@@ -67,7 +67,7 @@ func (p *Printer) PrintPaymentDate(pd paydates.PaymentDate) {
 	isUpcoming := pd.IsUpcoming(p.Today, p.DaysThreshold)
 
 	if isUpcoming && (weekDay == time.Monday) {
-		_, _ = p.UpcomingStyleOnMonday.Fprintln(p.Out, line)
+		_, _ = p.UpcomingStyleOnMonday.Fprintln(p.Out, line+", se recomienda dejar el pago desde el viernes anterior.")
 	} else if isUpcoming {
 		_, _ = p.UpcomingStyle.Fprintln(p.Out, line)
 	} else {

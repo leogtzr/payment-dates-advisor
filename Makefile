@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-BIN_FILE=recurrent-dates-notifier
+BIN_FILE=payment-dates-advisor
 
 build:
 	@go build -o ${BIN_FILE} ./cmd/
