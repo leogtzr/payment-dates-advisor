@@ -51,16 +51,6 @@ func GetLastDayOfMonth(year int, month time.Month, loc *time.Location) int {
 	return time.Date(year, month+1, 0, 0, 0, 0, 0, loc).Day()
 }
 
-// AdjustDayForMonth adjusts the day if it exceeds the last day of the month
-func AdjustDayForMonth(day int, year int, month time.Month, loc *time.Location) int {
-	lastOfMonth := GetLastDayOfMonth(year, month, loc)
-	d := day
-	if d > lastOfMonth {
-		d = lastOfMonth
-	}
-	return d
-}
-
 // IsMobileHoliday checks if a date is a mobile holiday
 func IsMobileHoliday(date time.Time) bool {
 	// Día de la Constitución: primer lunes de febrero
