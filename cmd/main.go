@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	monthsFlag := flag.Int("months", 6, "Número de meses hacia adelante (incluye mes actual)")
+	monthsFlag := flag.Int("months", 4, "Número de meses hacia adelante (incluye mes actual)")
 	configPath := flag.String("config", "config.yaml", "Ruta al archivo YAML de configuración")
 	daysNotify := flag.Int("days", 10, "Número de días para notificaciones (default 10)")
 	flag.Parse()

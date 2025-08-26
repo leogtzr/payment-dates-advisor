@@ -16,19 +16,20 @@ type PaymentDate struct {
 
 // FixedHoliday represents a fixed holiday (day and month)
 type FixedHoliday struct {
-	Day   int
-	Month time.Month
+	Day         int
+	Month       time.Month
+	Description string
 }
 
 // fixedHolidays lists the fixed bank holidays in Mexico
 var fixedHolidays = []FixedHoliday{
-	{1, time.January},    // Año Nuevo
-	{1, time.May},        // Día del Trabajo
-	{16, time.September}, // Día de la Independencia
-	{1, time.October},    // Transmisión del Poder Ejecutivo (aplica en 2025)
-	{2, time.November},   // Día de Muertos
-	{12, time.December},  // Día del Empleado Bancario
-	{25, time.December},  // Navidad
+	{1, time.January, "Año Nuevo"},                                        // Año Nuevo
+	{1, time.May, "Día del Trabajo"},                                      // Día del Trabajo
+	{16, time.September, "Día de la Independencia"},                       // Día de la Independencia
+	{1, time.October, "Transmisión del Poder Ejecutivo (aplica en 2025)"}, // Transmisión del Poder Ejecutivo (aplica en 2025)
+	{2, time.November, "Día de Muertos"},                                  // Día de Muertos
+	{12, time.December, "Día del Empleado Bancario"},                      // Día del Empleado Bancario
+	{25, time.December, "Navidad"},                                        // Navidad
 }
 
 // GeneratePaymentDatesForMonth generates all payment dates for a given month
@@ -74,6 +75,15 @@ func IsFixedHoliday(date time.Time) bool {
 		}
 	}
 	return IsMobileHoliday(date)
+}
+
+func FromFixedHolidayToString(date time.Time) string {
+	for _, holiday := range fixedHolidays {
+		if date.Day() == holiday.Day && date.Month() == holiday.Month {
+			return holiday.Description
+		}
+	}
+	return ""
 }
 
 // PreviousFriday returns the previous Friday from the given date

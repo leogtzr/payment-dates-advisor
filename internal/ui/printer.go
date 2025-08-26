@@ -56,9 +56,9 @@ func FormatPaymentDateLine(pd paydates.PaymentDate) (string, time.Weekday) {
 	if pd.IsAdjusted() {
 		reason := "fin de semana"
 		if paydates.IsFixedHoliday(pd.Original) {
-			reason = "feriado"
+			reason = "feriado (" + paydates.FromFixedHolidayToString(pd.Original) + ")"
 		} else if paydates.IsFixedHoliday(pd.Adjusted) {
-			reason = "feriado tras ajuste"
+			reason = "feriado tras ajuste (" + paydates.FromFixedHolidayToString(pd.Adjusted) + ")"
 		} else if pd.Original.Weekday() == time.Saturday || pd.Original.Weekday() == time.Sunday {
 			// Verificar si el lunes siguiente a un fin de semana es un feriado
 			var mondayAfter time.Time
