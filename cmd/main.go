@@ -18,7 +18,7 @@ func main() {
 
 	monthsAhead := *monthsFlag
 	if monthsAhead < 0 {
-		log.Fatal("months debe ser >= 0")
+		log.Fatal("months >= 0 required")
 	}
 
 	cfg, err := config.Load(*configPath)
